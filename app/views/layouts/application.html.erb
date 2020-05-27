@@ -10,6 +10,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= nav_bar brand: "Products", brand_link: root_url do  %>
+        <%= menu_group do %>
+          <%= menu_item "New product", products_new_path %>
+        <% end %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>
