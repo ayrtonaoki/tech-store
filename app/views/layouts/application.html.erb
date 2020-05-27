@@ -10,12 +10,19 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= nav_bar brand: "Products", brand_link: root_url do  %>
-        <%= menu_group do %>
-          <%= menu_item "New product", new_product_path %>
-        <% end %>
+    <%= nav_bar brand: "Products", brand_link: root_url do  %>
+      <%= menu_group do %>
+        <%= menu_item "New product", new_product_path %>
       <% end %>
+      <%= form_tag search_products_path, method: :get,
+        class: "navbar-form navbar-right"  do %>
+        <div class="form-group">
+          <%= text_field_tag :name, @name, class: "form-control" %>
+          <%= button_to "Search", nil, class: "btn btn-default" %>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="container">
       <%= yield %>
     </div>
   </body>
