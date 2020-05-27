@@ -14,6 +14,10 @@
         <td><%= product.description %></td>
         <td><%= "US$ #{product.price}" %></td>
         <td><%= product.amount %></td>
+        <td><%= button_to "Remove", product, method: :delete,
+          class: "btn btn-danger", data: {
+            confirm: "Remove #{product.name}?"}
+        %></td>
       </tr>
     <% end %>
   </tbody>
