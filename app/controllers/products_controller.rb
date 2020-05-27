@@ -8,4 +8,9 @@ class ProductsController < ApplicationController
     Product.create(product)
     redirect_to root_path
   end
+
+  def destroy
+    Product.destroy(params[:id])
+    redirect_to root_path
+  end
 end
