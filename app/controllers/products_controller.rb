@@ -3,10 +3,19 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def new
+     @product = Product.new
+  end
+
   def create
-    product = params.require(:product).permit(:name, :description, :price, :amount)
-    Product.create(product)
-    redirect_to root_path
+    values = params.require(:product).permit(:name, :description, :price, :amount)
+    @product = Product.new(values)
+    if @product.save
+      flash[:notice] = "#{@product.name} was created"
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def destroy
