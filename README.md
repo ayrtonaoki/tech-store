@@ -1,3 +1,3 @@
 # Tech Store
 
-On this project you have basic CRUD of technology products and their categories
+Project based on Alura's Rails class where I developed a simple application with basic CRUD features for a tech store
