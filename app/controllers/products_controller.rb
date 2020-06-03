@@ -3,6 +3,11 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def search
+    @name = params[:name]
+    @products = Product.where("name ilike ?", "%#{@name}%")
+  end
+
   def new
      @product = Product.new
      @categories = Category.all
@@ -22,10 +27,5 @@ class ProductsController < ApplicationController
   def destroy
     Product.destroy(params[:id])
     redirect_to root_path
-  end
-
-  def search
-    @name = params[:name]
-    @products = Product.where("name ilike ?", "%#{@name}%")
   end
 end
