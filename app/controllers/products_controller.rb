@@ -27,12 +27,12 @@ class ProductsController < ApplicationController
       flash[:notice] = "#{@product.name} was created"
       redirect_to root_path
     else
-      render_new_view
+      render_view(:new)
     end
   end
 
   def edit
-    render_new_view
+    render_view(:edit)
   end
 
   def update
@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
       flash[:notice] = "#{@product.name} was updated"
       redirect_to root_path
     else
-      render_new_view
+      render_view(:new)
     end
   end
 
@@ -58,8 +58,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def render_new_view
+  def render_view(view)
     @categories = Category.all
-    render :new
+    render view
   end
 end
