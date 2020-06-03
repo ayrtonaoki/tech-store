@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+
+  before_action :set_product, only: [:edit, :update, :destroy]
+
   def index
     @products = Product.all
   end
@@ -14,39 +17,43 @@ class ProductsController < ApplicationController
   end
 
   def create
-    values = params.require(:product).permit(:name, :description, :price, :amount, :category_id)
-    @product = Product.new(values)
+    @product = Product.new(product_params)
     if @product.save
       flash[:notice] = "#{@product.name} was created"
       redirect_to root_path
     else
-      render :new
+      render_new_view
     end
   end
 
   def edit
-    id = params[:id]
-    @product = Product.find(id)
-    @categories = Category.all
-    render :new
+    render_new_view
   end
 
   def update
-    id = params[:id]
-    @product = Product.find(id)
-
-    values = params.require(:product).permit(:name, :description, :price, :amount, :category_id)
-    if @product.update(values)
+    if @product.update(product_params)
       flash[:notice] = "#{@product.name} was updated"
       redirect_to root_path
     else
-      @categories = Category.all
-      render :new
+      render_new_view
     end
   end
 
   def destroy
-    Product.destroy(params[:id])
+    @product.destroy
     redirect_to root_path
+  end
+
+  def product_params
+    params.require(:product).permit(:name, :description, :price, :amount, :category_id)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def render_new_view
+    @categories = Category.all
+    render :new
   end
 end
