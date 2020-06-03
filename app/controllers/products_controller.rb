@@ -9,6 +9,11 @@ class ProductsController < ApplicationController
   def search
     @name = params[:name]
     @products = Product.where("name ilike ?", "%#{@name}%")
+    if @products.exists?
+      flash[:notice] = "Results for #{@name}"
+    else
+      flash[:notice] = "No results for #{@name}"
+    end
   end
 
   def new
@@ -41,6 +46,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
+    flash[:notice] = "#{@product.name} was deleted"
     redirect_to root_path
   end
 
