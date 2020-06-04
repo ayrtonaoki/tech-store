@@ -1,15 +1,9 @@
 <% if flash[:notice] %>
-  <div class="alert alert-success" role="alert">
+  <div class="alert alert-info" role="alert">
     <%= flash[:notice] %>
   </div>
 <% end %>
-
 <table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-    </tr>
-  </thead>
   <tbody>
     <% @categories.each do |category| %>
       <tr>
@@ -28,3 +22,7 @@
     <% end %>
   </tbody>
 </table>
+
+<%= button_to "New category", new_category_path, class: "btn btn-primary",
+  method: :get
+%>
