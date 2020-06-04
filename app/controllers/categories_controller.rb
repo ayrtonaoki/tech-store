@@ -4,7 +4,14 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    category_name = Category.find(params[:id]).name
     @products = Product.where("category_id": params[:id])
+    if @products.exists?
+      flash[:notice] = "Showing all products from #{category_name} category"
+    else
+      flash[:notice] = "No product found in #{category_name} category"
+      redirect_to categories_path
+    end
   end
 
   def new
