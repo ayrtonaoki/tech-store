@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(values)
     if @category.save
       flash[:notice] = "#{@category.name} was created"
-      redirect_to root_path
+      redirect_to categories_path
     else
       render :new
     end
@@ -46,7 +46,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     Category.destroy(params[:id])
-    redirect_to root_path
+    redirect_to categories_path
   end
 
   private
