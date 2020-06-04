@@ -4,15 +4,7 @@
   </div>
 <% end %>
 <table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Category</th>
-      <th scope="col">Price</th>
-      <th scope="col">Amount</th>
-    </tr>
-  </thead>
+  <%= render "products_list_headers" %>
   <tbody>
     <%= render @products %>
   </tbody>
