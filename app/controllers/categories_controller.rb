@@ -43,7 +43,7 @@ class CategoriesController < ApplicationController
     category = Category.find(params[:id])
     product = Product.where("category_id": params[:id])
     if product.exists?
-      flash[:alert] = "Can't remove: there is a product in this category"
+      flash[:alert] = "Can't delete: there is a product in this category"
       redirect_to categories_path
     else
       Category.destroy(params[:id])
