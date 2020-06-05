@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
     if @products.exists?
       flash[:notice] = "Results for #{@name}"
     else
-      flash[:notice] = "No results for #{@name}"
+      flash[:error] = "No results for #{@name}"
     end
   end
 
@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      flash[:notice] = "#{@product.name} was created"
+      flash[:success] = "#{@product.name} was created"
       redirect_to root_path
     else
       render_view(:new)
@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      flash[:notice] = "#{@product.name} was updated"
+      flash[:success] = "#{@product.name} was updated"
       redirect_to root_path
     else
       render_view(:new)
@@ -46,7 +46,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    flash[:notice] = "#{@product.name} was deleted"
+    flash[:success] = "#{@product.name} was deleted"
     redirect_to root_path
   end
 

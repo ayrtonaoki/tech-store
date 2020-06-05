@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
     if @products.exists?
       flash[:notice] = "Showing all products from #{category_name} category"
     else
-      flash[:notice] = "No product found in #{category_name} category"
+      flash[:error] = "No product found in #{category_name} category"
       redirect_to categories_path
     end
   end
@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
     values = params.require(:category).permit(:name)
     @category = Category.new(values)
     if @category.save
-      flash[:notice] = "#{@category.name} was created"
+      flash[:success] = "#{@category.name} was created"
       redirect_to categories_path
     else
       render :new
@@ -36,6 +36,7 @@ class CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     @category.update(category_params)
+    flash[:success] = "#{@category.name} was updated"
     redirect_to categories_path
   end
 
@@ -43,11 +44,11 @@ class CategoriesController < ApplicationController
     category = Category.find(params[:id])
     product = Product.where("category_id": params[:id])
     if product.exists?
-      flash[:alert] = "Can't delete: there is a product in this category"
+      flash[:error] = "Can't delete: there is a product in this category"
       redirect_to categories_path
     else
       Category.destroy(params[:id])
-      flash[:notice] = "#{category.name} was deleted"
+      flash[:success] = "#{category.name} was deleted"
       redirect_to categories_path
     end
   end
