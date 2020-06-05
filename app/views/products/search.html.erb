@@ -1,8 +1,4 @@
-<% if flash[:notice] %>
-  <div class="alert alert-success" role="alert">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
+<%= flash_messages %>
 <table class="table table-bordered table-hover">
   <%= render "products_list_headers" %>
   <tbody>
