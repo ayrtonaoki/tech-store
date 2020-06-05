@@ -40,8 +40,16 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    Category.destroy(params[:id])
-    redirect_to categories_path
+    category = Category.find(params[:id])
+    product = Product.where("category_id": params[:id])
+    if product.exists?
+      flash[:alert] = "Can't remove: there is a product in this category"
+      redirect_to categories_path
+    else
+      Category.destroy(params[:id])
+      flash[:notice] = "#{category.name} was deleted"
+      redirect_to categories_path
+    end
   end
 
   private
