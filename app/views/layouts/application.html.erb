@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TechStore</title>
+    <title>My Tech Store</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= favicon_link_tag asset_path('computer.ico'), :rel => 'icon', :type => "image/x-icon" %>
   </head>
 
   <body>
-    <%= nav_bar brand: "Tech Store", brand_link: root_url do  %>
+    <%= nav_bar brand: "My Tech Store", brand_link: root_url do  %>
       <%= menu_group do %>
         <%= menu_item "Categories", categories_path %>
       <% end %>
