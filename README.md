@@ -7,6 +7,12 @@ Project based on Alura's Rails class where I developed a simple application with
 [Click here to check the project](http://my-tech-store.herokuapp.com/)
 
 # Getting started
-`bundle install`
+- `bundle install`
 
-`rails db:migrate`
+- `rails db:migrate`
+
+# Details
+Ruby 2.5.1
+Rails 5.2.0
+PostgreSQL 12.2
+Bootstrap 4.0
