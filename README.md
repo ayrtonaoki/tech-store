@@ -12,7 +12,7 @@ Project based on Alura's Rails class where I developed a simple application with
 - `rails db:migrate`
 
 # Details
-- Ruby 2.5.1
+- [Ruby version](https://github.com/ayrtonaoki/my-tech-store/blob/master/.ruby-version)
 - Rails 5.2.0
 - PostgreSQL 12.2
 - Bootstrap 4.0
