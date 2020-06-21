@@ -5,13 +5,17 @@ default: &default
   pool: 5
   username:
   password:
-  timeout: 5000
 
-development:
-  <<: *default
+development: &development
+  adapter: postgresql
+  encoding: unicode
+  database: local_db
+  pool: 5
+  username: ayrtonaoki
+  password:
 
 test:
-  <<: *default
+  <<: *development
 
 production:
   <<: *default
