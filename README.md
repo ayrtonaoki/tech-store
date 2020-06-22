@@ -9,11 +9,7 @@ Project based on Alura's Rails class where I developed a simple application with
 # Getting started
 - `bundle install`
 
-- `rails db:create`
-
-- `rails db:migrate`
-
-- `rails db:seed`
+- `rails dev:setup`
 
 # Details
 - [Ruby version](https://github.com/ayrtonaoki/my-tech-store/blob/master/.ruby-version)
